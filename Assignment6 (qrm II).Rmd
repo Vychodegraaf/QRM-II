@@ -1,7 +1,7 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
-author: group 6, names: Jard van Duin, Tobias Pierik, Wouter Sanders, Vycho de Graaf
+author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders, Vycho de Graaf
 date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   pdf_document:
