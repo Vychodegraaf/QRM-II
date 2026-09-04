@@ -63,7 +63,7 @@ We encourage you to keep your code blocks, printing statements, and final answer
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+"The dataset has 808 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. for example different countries."
 ```
 
 **Your Answer:**
