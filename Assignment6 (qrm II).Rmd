@@ -26,6 +26,7 @@ format:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
 ```
 
 # Introduction
@@ -74,7 +75,7 @@ Write your response here.
 
 ```{r answer 2}
 #WRITE YOUR CODE HERE
-
+nominal: genre, ordinal is not present, continuous: popularity, discrete: runtime.
 ```
 
 **Your Answer:**
@@ -99,7 +100,12 @@ Each week consists of 1, 2, or 3 subquestions. The total amount of points you ca
 ```{r}
 
 #WRITE YOUR CODE HERE
-
+ movies4 %>% 
+  summarise(mean_revenue = mean(revenue), 
+            median_revenue = median(revenue),
+            maximum_revenue = max(revenue),
+            minimum_revenue = min(revenue))
+  
 ```
 
 **Your Answer:**
@@ -109,8 +115,7 @@ Write your formulated response here.
 *Step b*
 
 ```{r}
-
-#WRITE YOUR CODE HERE
+"the movie with the highest revenue is The Avengers and an example of a movie with the lowest revenue is Red Dog."
 
 ```
 
