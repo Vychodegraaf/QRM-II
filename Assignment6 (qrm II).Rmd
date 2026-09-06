@@ -75,7 +75,7 @@ Write your response here.
 
 ```{r answer 2}
 #WRITE YOUR CODE HERE
-nominal: genre, ordinal is not present, continuous: popularity, discrete: runtime.
+"Genre is nominal, ordinal is not present, popularity is continuous and runtime is discrete."
 ```
 
 **Your Answer:**
