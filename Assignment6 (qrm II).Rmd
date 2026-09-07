@@ -159,8 +159,8 @@ movies_LogRevenueNA <- log(movies4$revenue+1)
 movies_LogRevenueNA[movies4$revenue == 0] <- NA
 mean(movies_LogRevenueNA, na.rm = TRUE)
 hist(movies_LogRevenueNA,
-     main = "Revenue of movies",
-     xlab = "Revenue",
+     main = "log of revenue",
+     xlab = "Log",
      ylab = "Frequency")
 
 ```
