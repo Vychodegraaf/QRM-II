@@ -143,16 +143,15 @@ The histogram is skewed right. This tells us that it is hard to make Revenue fro
 ```{r}
 movies_LogRevenue <- log(movies4$revenue)
 print(movies_LogRevenue)
-#movies with no revenue will show "-inf" since the log of 0 does not exist. 
 mean(movies_LogRevenue)
-#This also shows -inf since the values of -inf are still included when calculating the mean. 
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+movies with no revenue will show -inf since the log of 0 does not exist. 
+The mean also shows -inf since the values of -inf are still included when calculating the mean. 
 *Step e*
 
 ```{r}
@@ -164,12 +163,12 @@ hist(movies_LogRevenueNA,
      xlab = "Revenue",
      ylab = "Frequency")
 mean(movies_LogRevenueNA, na.rm = TRUE)
-#The shape of the histogram is left skewed.
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The shape of the histogram is left skewed.
 
 *Step f*
 
