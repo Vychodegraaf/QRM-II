@@ -126,8 +126,11 @@ Write your formulated response here.
 *Step c*
 
 ```{r}
-
-#WRITE YOUR CODE HERE
+hist(movies4$revenue,
+     main = "Revenue of movies",
+     xlab = "Revenue",
+     ylab = "Frequency")
+#The histogram is skewed right. This tells us that it is hard to make Revenue from movies in the movie industry. Most movies will not earn a lot.
 
 ```
 
@@ -138,8 +141,11 @@ Write your formulated response here.
 *Step d*
 
 ```{r}
-
-#WRITE YOUR CODE HERE
+movies_LogRevenue <- log(movies4$revenue)
+print(movies_LogRevenue)
+#movies with no revenue will show "-inf" since the log of 0 does not exist. 
+mean(movies_LogRevenue)
+#This also shows -inf since the values of -inf are still included when calculating the mean. 
 
 ```
 
