@@ -64,23 +64,25 @@ We encourage you to keep your code blocks, printing statements, and final answer
 
 ```{r}
 #WRITE YOUR CODE HERE
-"The dataset has 808 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. for example different football teams."
+nrow(movies4)
+ncol(movies4)
 ```
 
 **Your Answer:**
 
 Write your response here.
+The dataset has 808 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. In this case different movies.
 
 2. Which of the following types of variables are present in your data set? (i) nominal; (ii) ordinal; (iii); continuous; (iv) discrete. If present, name one example of such a variable present in your data set. \textbf{[4 points]}
 
 ```{r answer 2}
 #WRITE YOUR CODE HERE
-"Genre is nominal, ordinal is not present, popularity is continuous and runtime is discrete."
 ```
 
 **Your Answer:**
 
 Write your response here.
+Genre is nominal, ordinal is not present, popularity is continuous and runtime is discrete.
 
 3. A movie studio wants to know which types of movies give maximal revenue. Perform the following steps to provide the movie studio with an analysis which corresponds to their request:
 
@@ -111,18 +113,17 @@ Each week consists of 1, 2, or 3 subquestions. The total amount of points you ca
 **Your Answer:**
 
 Write your formulated response here.
-
+The mean is 82727885, median is 14560504, maximum is 1519557910 and the minimum is 0
 *Step b*
 
 ```{r}
-"the movie with the highest revenue is The Avengers and an example of a movie with the lowest revenue is Red Dog."
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+the movie with the highest revenue is The Avengers and an example of a movie with the lowest revenue is Red Dog.
 *Step c*
 
 ```{r}
@@ -130,14 +131,12 @@ hist(movies4$revenue,
      main = "Revenue of movies",
      xlab = "Revenue",
      ylab = "Frequency")
-#The histogram is skewed right. This tells us that it is hard to make Revenue from movies in the movie industry. Most movies will not earn a lot.
-
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+The histogram is skewed right. This tells us that it is hard to make Revenue from movies in the movie industry. Most movies will not earn a lot.
 *Step d*
 
 ```{r}
