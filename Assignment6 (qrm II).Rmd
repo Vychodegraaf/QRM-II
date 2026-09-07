@@ -122,7 +122,6 @@ The mean is 82727885, median is 14560504, maximum is 1519557910 and the minimum 
 max(movies4$revenue)
 min(movies4$revenue)
 ```
-
 **Your Answer:**
 
 Write your formulated response here.
@@ -146,7 +145,6 @@ The histogram is skewed right. This tells us that it is hard to make Revenue fro
 movies_LogRevenue <- log(movies4$revenue)
 print(movies_LogRevenue)
 mean(movies_LogRevenue)
-
 ```
 
 **Your Answer:**
@@ -174,15 +172,17 @@ The mean is 17.2798 and the shape of the histogram is left skewed.
 *Step f*
 
 ```{r}
-#WRITE YOUR CODE HERE
+skewness(movies4$revenue, na.rm = TRUE)
+kurtosis(movies4$revenue, na.rm = TRUE)
 
-
+skewness(movies_LogRevenueNA, na.rm = TRUE)
+kurtosis(movies_LogRevenueNA, na.rm = TRUE)
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+The skewness is 3.261763 and the kurtosis is 16.35398 for the variable revenue. The skewness is above 0 which explains that it is skewed right. The kurtosis of 16 explains why the histogram has high frequency to the left side and is not flat. The skewness for the log of revenue is -1.946866 which tells us that it is skewed left. The kurtosis of 10.87042 tells us that the that the histogram is not flat.
 # Week 2 
 1 Is your dataset movies4.tsv the full population, or is it a sample of a larger population? If the latter, how would you describe the full population? \textbf{[4 points]}
 
