@@ -26,7 +26,9 @@ format:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+install.packages("moments")
 library(dplyr)
+library(moments)
 ```
 
 # Introduction
@@ -156,13 +158,12 @@ The mean also shows -inf since the values of -inf are still included when calcul
 
 ```{r}
 movies_LogRevenueNA <- log(movies4$revenue+1)
-movies_LogRevenueNA[movies4$revenue == 0] <- NA
+movies4$revenue[movies_LogRevenueNA == 0] <- NA
 mean(movies_LogRevenueNA, na.rm = TRUE)
 hist(movies_LogRevenueNA,
      main = "log of revenue",
      xlab = "Log",
      ylab = "Frequency")
-
 ```
 
 **Your Answer:**
