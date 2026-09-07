@@ -156,9 +156,15 @@ Write your formulated response here.
 *Step e*
 
 ```{r}
-
-#WRITE YOUR CODE HERE
-
+movies_LogRevenueNA <- log(movies4$revenue+1)
+movies_LogRevenueNA[movies4$revenue == 0] <- NA
+print(movies_LogRevenueNA)
+hist(movies_LogRevenueNA,
+     main = "Revenue of movies",
+     xlab = "Revenue",
+     ylab = "Frequency")
+mean(movies_LogRevenueNA, na.rm = TRUE)
+#The shape of the histogram is left skewed.
 ```
 
 **Your Answer:**
@@ -168,8 +174,8 @@ Write your formulated response here.
 *Step f*
 
 ```{r}
-
 #WRITE YOUR CODE HERE
+
 
 ```
 
