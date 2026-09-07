@@ -117,13 +117,14 @@ The mean is 82727885, median is 14560504, maximum is 1519557910 and the minimum 
 *Step b*
 
 ```{r}
-
+max(movies4$revenue)
+min(movies4$revenue)
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-the movie with the highest revenue is The Avengers and an example of a movie with the lowest revenue is Red Dog.
+the movie with the highest revenue is The Avengers with a revenue of 1519557910 and an example of a movie with the lowest revenue is Red Dog with a revenue of 0.
 *Step c*
 
 ```{r}
