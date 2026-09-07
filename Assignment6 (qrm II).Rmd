@@ -157,18 +157,18 @@ The mean also shows -inf since the values of -inf are still included when calcul
 ```{r}
 movies_LogRevenueNA <- log(movies4$revenue+1)
 movies_LogRevenueNA[movies4$revenue == 0] <- NA
-print(movies_LogRevenueNA)
+mean(movies_LogRevenueNA, na.rm = TRUE)
 hist(movies_LogRevenueNA,
      main = "Revenue of movies",
      xlab = "Revenue",
      ylab = "Frequency")
-mean(movies_LogRevenueNA, na.rm = TRUE)
+
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-The shape of the histogram is left skewed.
+The mean is 17.2798 and the shape of the histogram is left skewed.
 
 *Step f*
 
