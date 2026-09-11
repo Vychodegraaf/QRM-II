@@ -66,8 +66,9 @@ We encourage you to keep your code blocks, printing statements, and final answer
 
 ```{r}
 #WRITE YOUR CODE HERE
-nrow(movies4)
+nrow(movies4) 
 ncol(movies4)
+#hernoemen row naar subjects en colomn naar variables keer elkaar = observations
 ```
 
 **Your Answer:**
