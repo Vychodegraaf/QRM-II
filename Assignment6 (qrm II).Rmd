@@ -203,24 +203,25 @@ e. Using the formulas of the *Central Limit Theorem*, give the distribution of t
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+mean(movies4$vote_average)
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+The mean is 6.039356
 *Step b*
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+movies_sample <- rnorm(25, 6.039356, sd(movies4$vote_average))
+mean(movies_sample)
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+the average of the sample is a bit different as the average of the total movies. this is the case because you are only taking 25 of the total. This is the reason why the average could be a bit randomized. 
 *Step c*
 
 ```{r}
