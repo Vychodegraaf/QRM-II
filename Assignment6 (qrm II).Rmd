@@ -230,7 +230,10 @@ the average of the sample is a bit different as the average of the total movies.
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+sample_means <- c()
+  for(i in c(1:100)){
+    sample_means[i] <- mean(rnorm(25, 6.039356, sd(movies4$vote_average)))}
+    head(sample_means)
 ```
 
 **Your Answer:**
