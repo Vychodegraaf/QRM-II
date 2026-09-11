@@ -66,14 +66,18 @@ We encourage you to keep your code blocks, printing statements, and final answer
 
 ```{r}
 #WRITE YOUR CODE HERE
-nrow(movies4)
-ncol(movies4)
+subjects <- nrow(movies4)
+variables <- ncol(movies4)
+observations <- subjects * variables
+print(subjects)
+print(variables)
+print(observations)
 ```
 
 **Your Answer:**
 
 Write your response here.
-The dataset has 808 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. In this case different movies.
+The dataset has 15352 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. In this case different movies.
 
 2. Which of the following types of variables are present in your data set? (i) nominal; (ii) ordinal; (iii); continuous; (iv) discrete. If present, name one example of such a variable present in your data set. \textbf{[4 points]}
 
