@@ -250,13 +250,18 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+hist(sample_means,
+     main = "mean of vote average",
+     xlab = "amount of movies",
+     ylab = "vote average")
+mean(sample_means)
+sd(sample_means)
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+The mean is 6.020662 and the standard deviation is 0.2515497. The shape of the histogram is skewed left.
 *Step e*
 
 **Your Answer:**
