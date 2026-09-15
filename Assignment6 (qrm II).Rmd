@@ -193,13 +193,14 @@ kurtosis(movies_LogRevenueNA, na.rm = TRUE)
 
 Write your formulated response here.
 The skewness is 3.261763 and the kurtosis is 16.35398 for the variable revenue. The skewness is above 0 which explains that it is skewed right. The kurtosis of 16 explains why the histogram has high frequency to the left side and is not flat. The skewness for the log of revenue is -1.946866 which tells us that it is skewed left. The kurtosis of 10.87042 tells us that the that the histogram is not flat.
+
 # Week 2 
 1 Is your dataset movies4.tsv the full population, or is it a sample of a larger population? If the latter, how would you describe the full population? \textbf{[4 points]}
 
 *Your answer here:*
 
 Write your formulated response here.
-
+The dataset is a sample of a larger population since the index is missing a lot of numbers. We would describe the full population as all movies from 1990 to 2016.
 
 2 For this question, you will assume that your data set is the full population. 
 
