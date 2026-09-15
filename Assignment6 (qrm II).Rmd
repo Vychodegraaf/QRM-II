@@ -66,20 +66,29 @@ We encourage you to keep your code blocks, printing statements, and final answer
 
 ```{r}
 #WRITE YOUR CODE HERE
+<<<<<<< HEAD
 nrow(movies4) 
 ncol(movies4)
 #hernoemen row naar subjects en colomn naar variables keer elkaar = observations
+=======
+subjects <- nrow(movies4)
+variables <- ncol(movies4)
+observations <- subjects * variables
+print(subjects)
+print(variables)
+print(observations)
+>>>>>>> bdb052383d36c57621a15205f6157fc3151a096f
 ```
 
 **Your Answer:**
 
 Write your response here.
-The dataset has 808 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. In this case different movies.
+The dataset has 15352 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. In this case different movies.
 
 2. Which of the following types of variables are present in your data set? (i) nominal; (ii) ordinal; (iii); continuous; (iv) discrete. If present, name one example of such a variable present in your data set. \textbf{[4 points]}
 
 ```{r answer 2}
-#WRITE YOUR CODE HERE
+head(movies4, n=4)
 ```
 
 **Your Answer:**
@@ -227,7 +236,10 @@ the average of the sample is a bit different as the average of the total movies.
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+sample_means <- c()
+  for(i in c(1:100)){
+    sample_means[i] <- mean(rnorm(25, 6.039356, sd(movies4$vote_average)))}
+    head(sample_means)
 ```
 
 **Your Answer:**
