@@ -363,12 +363,15 @@ d. Assume that the variance of revenue for movies with a male director in your d
 
 ```{r}
 #WRITE YOUR CODE HERE
+sum(movies4$director_gender == "male", na.rm = TRUE)
+sum(movies4$director_gender == "female", na.rm = TRUE)
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+In the sample, 685 movies were directed by a male director, while 80 movies were directed by a female director.
 
 *step b*
 
