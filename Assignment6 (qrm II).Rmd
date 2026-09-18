@@ -425,12 +425,42 @@ The variance of revenue for movies with a female director is 21,607.04 (million 
 *step d*
 ```{r}
 #WRITE YOUR CODE HERE
+# Test statistic
+F <- 21607.04 / 39453.26
+F
+
+# Two-sided p-value
+p_value <- 2 * min(
+  pf(F, df1 = 79, df2 = 79),
+  1 - pf(F, df1 = 79, df2 = 79)
+)
+
+p_value
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The null hypothesis is
+
+𝐻0:𝜎𝐹2=39,453.26
+
+meaning that the population variance of revenue for movies with a female director is equal to the population variance for movies with a male director.
+
+The alternative hypothesis is
+
+𝐻𝐴:𝜎𝐹2≠39,453.26.
+
+I use a significance level of 𝛼=0.05.
+
+The test statistic is
+
+𝐹=21,607.04 /39,453.26=0.5477.
+
+Under the null hypothesis, the test statistic follows an F-distribution with 79 degrees of freedom. The two-sided p-value is 0.0081.
+
+Since the p-value (0.0081) is smaller than the significance level of 0.05, we reject the null hypothesis. There is sufficient evidence to conclude that the variance of revenue for movies with female directors is different from the variance of revenue for movies with male directors.
 
 3
 
