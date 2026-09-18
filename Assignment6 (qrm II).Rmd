@@ -377,12 +377,25 @@ In the sample, 685 movies were directed by a male director, while 80 movies were
 
 ```{r}
 #WRITE YOUR CODE HERE
+binom.test(685, 765, p = 0.5, alternative = "two.sided")
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The null and alternative hypotheses are:
+
+𝐻0:𝑝=0.5, meaning that the probability of a movie being directed by a male or female director is equal.
+
+𝐻𝐴:𝑝≠
+0.5, meaning that the probabilities are not equal.
+
+I use a significance level of 𝛼=0.05.
+
+Using a two-sided binomial test in R with binom.test(685, 765, p = 0.5), the p-value is extremely small (p < 0.001).
+
+Since the p-value is smaller than the significance level of 0.05, we reject the null hypothesis. There is strong statistical evidence that the probability of a movie being directed by a male director is not equal to the probability of it being directed by a female director.
 
 *step c*
 
