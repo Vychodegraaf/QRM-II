@@ -331,6 +331,16 @@ For the next part of the assignment, assume that the movies in your data frame a
 1. Give a 90 percent confidence interval for the variable *revenue*. Interpret the result. \textbf{[2 points]}
 ```{r}
 #WRITE YOUR CODE HERE
+# 90% confidence interval for mean revenue
+
+x <- movies4$revenue
+
+mean(x, na.rm = TRUE)
+sd(x, na.rm = TRUE)
+sum(!is.na(x))
+
+# Calculate the 90% confidence interval
+t.test(x, conf.level = 0.90)
 
 
 ```
@@ -338,6 +348,9 @@ For the next part of the assignment, assume that the movies in your data frame a
 **Your Answer:**
 
 Write your formulated response here.
+The 90% confidence interval for the mean revenue is [107,452,778, 135,175,648].
+
+Assuming that the movies in our data frame are a random sample from a larger population of movies, we are 90% confident that the true mean revenue of the population of movies is between $107,452,778 and $135,175,648.
 
 2
 
