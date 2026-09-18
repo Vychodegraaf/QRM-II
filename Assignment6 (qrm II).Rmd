@@ -277,8 +277,15 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
+summary(movies4$release_month)
+sd(movies4$release_month)
+hist(movies4$release_month,freq=FALSE,
+     main="Distribution of Movie release_month",
+     xlab="month of release")
+abline(h=1/12,col="blue",lwd=2)
 
 ```
+
 
 **Your Answer:**
 
