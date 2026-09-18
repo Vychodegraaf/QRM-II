@@ -280,15 +280,49 @@ print(sd)
 **Your Answer:**
 
 Write your formulated response here.
+I would expect the release month of a movie to follow a discrete uniform distribution because there are 12 possible months, and without looking at the data, each month could be expected to be equally likely for a movie to be released. Therefore, each month would have a probability of 1/12.
+
+For a discrete uniform distribution from 1 to 12, the expected mean is 6.5 and the expected standard deviation is approximately 3.45.
 
 ```{r}
 #WRITE YOUR CODE HERE
+# Bekijk de frequenties
+table(movies4$release_month)
+
+# Verwachte mean en standard deviation
+mean_uniform <- (1 + 12) / 2
+sd_uniform <- sqrt((12^2 - 1) / 12)
+
+mean_uniform
+sd_uniform
+
+# Histogram
+hist(movies4$release_month,
+     breaks = seq(0.5, 12.5, by = 1),
+     probability = TRUE,
+     main = "Distribution of Movie Release Month",
+     xlab = "Release Month",
+     col = "lightblue",
+     border = "white",
+     xaxt = "n")
+
+# X-as met maanden 1 t/m 12
+axis(1, at = 1:12, labels = 1:12)
+
+# Discrete uniform distribution erboven
+points(1:12, rep(1/12, 12),
+       type = "h",
+       lwd = 3,
+       col = "red")
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+There are 808 movies in the dataset, so if the distribution were perfectly uniform, we would expect  67.3 movies to be released in each month. The observed frequencies range from 39 movies in November to 112 movies in September.
+
+The histogram therefore does not follow a perfectly discrete uniform distribution. September has considerably more movie releases than expected, while November has considerably fewer. The deviation from the discrete uniform distribution can be explained by the fact that movie releases are not randomly distributed throughout the year. Movie studios may choose particular release months based on factors such as holidays, audience availability or competition. Therefore, some months can have more movie releases than others.
 
 # Week 3 
 
