@@ -388,8 +388,7 @@ The null and alternative hypotheses are:
 
 𝐻0:𝑝=0.5, meaning that the probability of a movie being directed by a male or female director is equal.
 
-𝐻𝐴:𝑝≠
-0.5, meaning that the probabilities are not equal.
+𝐻𝐴:𝑝≠0.5, meaning that the probabilities are not equal.
 
 I use a significance level of 𝛼=0.05.
 
@@ -401,12 +400,27 @@ Since the p-value is smaller than the significance level of 0.05, we reject the 
 
 ```{r}
 #WRITE YOUR CODE HERE
+# Revenue in millions of dollars
+movies4$revenue_millions <- movies4$revenue / 1000000
+
+# Variance for male directors
+var(movies4$revenue_millions[movies4$director_gender == "male"],
+    na.rm = TRUE)
+
+# Variance for female directors
+var(movies4$revenue_millions[movies4$director_gender == "female"],
+    na.rm = TRUE)
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+Revenue was recoded from dollars to millions of dollars by dividing revenue by 1,000,000.
+
+The variance of revenue for movies with a male director is 39,453.26 (million dollars)².
+
+The variance of revenue for movies with a female director is 21,607.04 (million dollars)².
 
 *step d*
 ```{r}
