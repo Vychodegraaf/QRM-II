@@ -488,7 +488,7 @@ plot(mean_revenue$release_year, mean_revenue$revenue,
 
 **Your Answer:**
 
-Write your formulated response here.
+The trend is that revenue of movies is decreasing over time, with a few exceptions. 
 
 *step b*
 
