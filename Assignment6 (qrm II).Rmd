@@ -281,15 +281,49 @@ We expected a low standard deviation, because of the normal distribution. This i
 **Your Answer:**
 
 Write your formulated response here.
+I would expect the release month of a movie to follow a discrete uniform distribution because there are 12 possible months, and without looking at the data, each month could be expected to be equally likely for a movie to be released. Therefore, each month would have a probability of 1/12.
+
+For a discrete uniform distribution from 1 to 12, the expected mean is 6.5 and the expected standard deviation is approximately 3.45.
 
 ```{r}
 #WRITE YOUR CODE HERE
+# Bekijk de frequenties
+table(movies4$release_month)
+
+# Verwachte mean en standard deviation
+mean_uniform <- (1 + 12) / 2
+sd_uniform <- sqrt((12^2 - 1) / 12)
+
+mean_uniform
+sd_uniform
+
+# Histogram
+hist(movies4$release_month,
+     breaks = seq(0.5, 12.5, by = 1),
+     probability = TRUE,
+     main = "Distribution of Movie Release Month",
+     xlab = "Release Month",
+     col = "lightblue",
+     border = "white",
+     xaxt = "n")
+
+# X-as met maanden 1 t/m 12
+axis(1, at = 1:12, labels = 1:12)
+
+# Discrete uniform distribution erboven
+points(1:12, rep(1/12, 12),
+       type = "h",
+       lwd = 3,
+       col = "red")
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+There are 808 movies in the dataset, so if the distribution were perfectly uniform, we would expect  67.3 movies to be released in each month. The observed frequencies range from 39 movies in November to 112 movies in September.
+
+The histogram therefore does not follow a perfectly discrete uniform distribution. September has considerably more movie releases than expected, while November has considerably fewer. The deviation from the discrete uniform distribution can be explained by the fact that movie releases are not randomly distributed throughout the year. Movie studios may choose particular release months based on factors such as holidays, audience availability or competition. Therefore, some months can have more movie releases than others.
 
 # Week 3 
 
@@ -298,6 +332,16 @@ For the next part of the assignment, assume that the movies in your data frame a
 1. Give a 90 percent confidence interval for the variable *revenue*. Interpret the result. \textbf{[2 points]}
 ```{r}
 #WRITE YOUR CODE HERE
+# 90% confidence interval for mean revenue
+
+x <- movies4$revenue
+
+mean(x, na.rm = TRUE)
+sd(x, na.rm = TRUE)
+sum(!is.na(x))
+
+# Calculate the 90% confidence interval
+t.test(x, conf.level = 0.90)
 
 
 ```
@@ -305,6 +349,9 @@ For the next part of the assignment, assume that the movies in your data frame a
 **Your Answer:**
 
 Write your formulated response here.
+The 90% confidence interval for the mean revenue is [107,452,778, 135,175,648].
+
+Assuming that the movies in our data frame are a random sample from a larger population of movies, we are 90% confident that the true mean revenue of the population of movies is between $107,452,778 and $135,175,648.
 
 2
 
@@ -317,44 +364,104 @@ d. Assume that the variance of revenue for movies with a male director in your d
 
 ```{r}
 #WRITE YOUR CODE HERE
+sum(movies4$director_gender == "male", na.rm = TRUE)
+sum(movies4$director_gender == "female", na.rm = TRUE)
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+In the sample, 685 movies were directed by a male director, while 80 movies were directed by a female director.
 
 *step b*
 
 ```{r}
 #WRITE YOUR CODE HERE
+binom.test(685, 765, p = 0.5, alternative = "two.sided")
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The null and alternative hypotheses are:
+
+𝐻0:𝑝=0.5, meaning that the probability of a movie being directed by a male or female director is equal.
+
+𝐻𝐴:𝑝≠0.5, meaning that the probabilities are not equal.
+
+I use a significance level of 𝛼=0.05.
+
+Using a two-sided binomial test in R with binom.test(685, 765, p = 0.5), the p-value is extremely small (p < 0.001).
+
+Since the p-value is smaller than the significance level of 0.05, we reject the null hypothesis. There is strong statistical evidence that the probability of a movie being directed by a male director is not equal to the probability of it being directed by a female director.
 
 *step c*
 
 ```{r}
 #WRITE YOUR CODE HERE
+# Revenue in millions of dollars
+movies4$revenue_millions <- movies4$revenue / 1000000
+
+# Variance for male directors
+var(movies4$revenue_millions[movies4$director_gender == "male"],
+    na.rm = TRUE)
+
+# Variance for female directors
+var(movies4$revenue_millions[movies4$director_gender == "female"],
+    na.rm = TRUE)
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+Revenue was recoded from dollars to millions of dollars by dividing revenue by 1,000,000.
+
+The variance of revenue for movies with a male director is 39,453.26 (million dollars)².
+
+The variance of revenue for movies with a female director is 21,607.04 (million dollars)².
 
 *step d*
 ```{r}
 #WRITE YOUR CODE HERE
+# Test statistic
+F <- 21607.04 / 39453.26
+F
+
+# Two-sided p-value
+p_value <- 2 * min(
+  pf(F, df1 = 79, df2 = 79),
+  1 - pf(F, df1 = 79, df2 = 79)
+)
+
+p_value
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The null hypothesis is
+
+𝐻0:𝜎𝐹2=39,453.26
+
+meaning that the population variance of revenue for movies with a female director is equal to the population variance for movies with a male director.
+
+The alternative hypothesis is
+
+𝐻𝐴:𝜎𝐹2≠39,453.26.
+
+I use a significance level of 𝛼=0.05.
+
+The test statistic is
+
+𝐹=21,607.04 /39,453.26=0.5477.
+
+Under the null hypothesis, the test statistic follows an F-distribution with 79 degrees of freedom. The two-sided p-value is 0.0081.
+
+Since the p-value (0.0081) is smaller than the significance level of 0.05, we reject the null hypothesis. There is sufficient evidence to conclude that the variance of revenue for movies with female directors is different from the variance of revenue for movies with male directors.
 
 3
 
