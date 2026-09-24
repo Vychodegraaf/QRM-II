@@ -1,7 +1,7 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
-author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders, Vycho de Graaf.
+author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders (2899366), Vycho de Graaf.
 date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   pdf_document:
@@ -473,6 +473,16 @@ c. If you look closely at the resulting plot in b.), you will probably see that 
 
 ```{r}
 #WRITE YOUR CODE HERE
+mean_revenue <- aggregate(revenue ~ release_year,
+                          data = movies,
+                          FUN = mean,
+                          na.rm = TRUE)
+
+plot(mean_revenue$release_year, mean_revenue$revenue,
+     main = "mean of revenue",
+     xlab = "Year",
+     ylab = "Mean Revenue",
+     pch = 19)
 
 ```
 
