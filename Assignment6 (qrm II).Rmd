@@ -465,7 +465,7 @@ plot(mean_revenue$release_year, mean_revenue$revenue,
      xlab = "Year",
      ylab = "Mean Revenue",
      pch = 19)
-
+     
 ```
 
 **Your Answer:**
@@ -510,12 +510,29 @@ arrows(x0 = mean_revenue$release_year, y0 = conf_int_lowerbound,
 
 **Your Answer:**
 
-Write your formulated response here.
+The reason for this is that the standard deviations vary from year to year. The higher the standard deviation in a given year, the wider the confidence interval needs to be; this is evident in years with a higher standard deviation or a lower N. The higher the N, the more observations you have—and thus the narrower the confidence interval—because you have conducted more research and have greater certainty.
 
 *step c*
 
 ```{r}
-#WRITE YOUR CODE HERE
+
+results <- data.frame(
+  year = mean_revenue$release_year,
+  sd = sd_revenue$revenue,
+  n = n_revenue$revenue,
+  CI_width = conf_int_upperbound - conf_int_lowerbound
+)
+
+
+highest <- results[order(results$CI_width, decreasing = TRUE), ][1:2, ]
+
+
+lowest <- results[order(results$CI_width), ][1:2, ]
+
+
+highest
+lowest
+
 
 ```
 
