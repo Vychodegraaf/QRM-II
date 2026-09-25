@@ -445,13 +445,13 @@ p_value
 Write your formulated response here.
 The null hypothesis is
 
-𝐻0:𝜎𝐹2=39,453.26
+𝐻0: standard deviation𝐹2=39,453.26
 
 meaning that the population variance of revenue for movies with a female director is equal to the population variance for movies with a male director.
 
 The alternative hypothesis is
 
-𝐻𝐴:𝜎𝐹2≠39,453.26.
+𝐻𝐴: standard deviation𝐹2≠39,453.26.
 
 I use a significance level of 𝛼=0.05.
 
