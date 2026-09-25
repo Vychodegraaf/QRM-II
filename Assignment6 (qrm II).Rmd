@@ -1,7 +1,7 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
-author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders (2899366), Vycho de Graaf.
+author: group 6, names: Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702).
 date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   pdf_document:
@@ -460,10 +460,10 @@ mean_revenue <- aggregate(revenue ~ release_year,
                           FUN = mean,
                           na.rm = TRUE)
 
-plot(mean_revenue$release_year, mean_revenue$revenue,
+plot(mean_revenue$release_year, mean_revenue$revenue/1000000,
      main = "mean of revenue",
      xlab = "Year",
-     ylab = "Mean Revenue",
+     ylab = "Mean Revenue in millions",
      pch = 19)
      
 ```
@@ -476,6 +476,7 @@ The trend is that revenue of movies is decreasing over time, with a few exceptio
 
 ```{r}
 #WRITE YOUR CODE HERE
+
 mean_revenue <- aggregate(revenue ~ release_year,
                            data = movies,
                            FUN = mean,
@@ -490,15 +491,15 @@ n_revenue <- aggregate(revenue ~ release_year,
                         data = movies,
                         FUN = length)
 
-conf_int <- sd_revenue$revenue /sqrt(n_revenue$revenue)
+conf_int <- (sd_revenue$revenue/1000000) /sqrt(n_revenue$revenue)
 conf_int95 <- 1.96 * conf_int
-conf_int_lowerbound <- mean_revenue$revenue - conf_int95
-conf_int_upperbound <- mean_revenue$revenue + conf_int95
+conf_int_lowerbound <- mean_revenue$revenue/1000000 - conf_int95
+conf_int_upperbound <- mean_revenue$revenue/1000000 + conf_int95
 
 plot(mean_revenue$release_year, mean_revenue$revenue,
      main = "Mean Revenue by Year (95% CI)",
      xlab = "Year",
-     ylab = "Mean Revenue",
+     ylab = "Mean Revenue In Millions",
      pch = 19,
      ylim = range(c(conf_int_lowerbound, conf_int_upperbound), na.rm = TRUE))
 
