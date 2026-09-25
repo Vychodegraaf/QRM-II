@@ -461,7 +461,7 @@ mean_revenue <- aggregate(revenue ~ release_year,
                           na.rm = TRUE)
 
 plot(mean_revenue$release_year, mean_revenue$revenue/1000000,
-     main = "mean of revenue",
+     main = "Mean of revenue",
      xlab = "Year",
      ylab = "Mean Revenue in millions",
      pch = 19)
@@ -475,38 +475,33 @@ The trend is that revenue of movies is decreasing over time, with a few exceptio
 *step b*
 
 ```{r}
-#WRITE YOUR CODE HERE
+mean_revenue <- movies %>%
+  group_by(release_year) %>%
+  summarise(
+    mean_revenue = mean(revenue, na.rm = TRUE),
+    sd_revenue = sd(revenue, na.rm = TRUE),
+    n = sum(!is.na(revenue))
+  ) %>%
+  mutate(
+    se = sd_revenue / sqrt(n),
+    lower = mean_revenue - 1.96 * se,
+    upper = mean_revenue + 1.96 * se
+  )
 
-mean_revenue <- aggregate(revenue ~ release_year,
-                           data = movies,
-                           FUN = mean,
-                           na.rm = TRUE)
-
-sd_revenue <- aggregate(revenue ~ release_year,
-                         data = movies,
-                         FUN = sd,
-                         na.rm = TRUE)
-
-n_revenue <- aggregate(revenue ~ release_year,
-                        data = movies,
-                        FUN = length)
-
-conf_int <- (sd_revenue$revenue/1000000) /sqrt(n_revenue$revenue)
-conf_int95 <- 1.96 * conf_int
-conf_int_lowerbound <- mean_revenue$revenue/1000000 - conf_int95
-conf_int_upperbound <- mean_revenue$revenue/1000000 + conf_int95
-
-plot(mean_revenue$release_year, mean_revenue$revenue,
-     main = "Mean Revenue by Year (95% CI)",
+plot(mean_revenue$release_year,
+     mean_revenue$mean_revenue / 1000000,
+     main = "Mean Movie Revenue",
      xlab = "Year",
-     ylab = "Mean Revenue In Millions",
-     pch = 19,
-     ylim = range(c(conf_int_lowerbound, conf_int_upperbound), na.rm = TRUE))
+     ylab = "Mean Revenue",
+     pch = 19)
 
-arrows(x0 = mean_revenue$release_year, y0 = conf_int_lowerbound,
-       x1 = mean_revenue$release_year, y1 = conf_int_upperbound,
-       angle = 90, code = 3, length = 0.10)
-
+arrows(mean_revenue$release_year,
+       mean_revenue$lower / 1000000,
+       mean_revenue$release_year,
+       mean_revenue$upper / 1000000,
+       angle = 90,
+       code = 3,
+       length = 0.05)
 ```
 
 **Your Answer:**
@@ -516,25 +511,18 @@ The reason for this is that the standard deviations vary from year to year. The 
 *step c*
 
 ```{r}
-
 results <- data.frame(
   year = mean_revenue$release_year,
-  sd = sd_revenue$revenue,
-  n = n_revenue$revenue,
-  CI_width = conf_int_upperbound - conf_int_lowerbound
+  sd = mean_revenue$sd_revenue,
+  n = mean_revenue$n,
+  CI_width = mean_revenue$upper - mean_revenue$lower
 )
-
-
 highest <- results[order(results$CI_width, decreasing = TRUE), ][1:2, ]
-
 
 lowest <- results[order(results$CI_width), ][1:2, ]
 
-
 highest
 lowest
-
-
 ```
 
 # Week 4 
