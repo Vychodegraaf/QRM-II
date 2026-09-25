@@ -331,7 +331,7 @@ For the next part of the assignment, assume that the movies in your data frame a
 1. Give a 90 percent confidence interval for the variable *revenue*. Interpret the result. \textbf{[2 points]}
 ```{r}
 #WRITE YOUR CODE HERE
-# 90% confidence interval for mean revenue
+
 
 x <- movies4$revenue
 
@@ -339,7 +339,7 @@ mean(x, na.rm = TRUE)
 sd(x, na.rm = TRUE)
 sum(!is.na(x))
 
-# Calculate the 90% confidence interval
+
 t.test(x, conf.level = 0.90)
 
 
@@ -400,14 +400,14 @@ Since the p-value is smaller than the significance level of 0.05, we reject the 
 
 ```{r}
 #WRITE YOUR CODE HERE
-# Revenue in millions of dollars
+
 movies4$revenue_millions <- movies4$revenue / 1000000
 
-# Variance for male directors
+
 var(movies4$revenue_millions[movies4$director_gender == "male"],
     na.rm = TRUE)
 
-# Variance for female directors
+
 var(movies4$revenue_millions[movies4$director_gender == "female"],
     na.rm = TRUE)
 
@@ -425,11 +425,11 @@ The variance of revenue for movies with a female director is 21,607.04 (million 
 *step d*
 ```{r}
 #WRITE YOUR CODE HERE
-# Test statistic
+
 F <- 21607.04 / 39453.26
 F
 
-# Two-sided p-value
+
 p_value <- 2 * min(
   pf(F, df1 = 79, df2 = 79),
   1 - pf(F, df1 = 79, df2 = 79)
