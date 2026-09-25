@@ -1,7 +1,7 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
-author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders, Vycho de Graaf.
+author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders (2899366), Vycho de Graaf.
 date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   pdf_document:
@@ -274,6 +274,7 @@ sd <- sd(movies4$vote_average)/sqrt(25)
 print(m)
 print(sd)
 ```
+We expected a low standard deviation, because of the normal distribution. This is the case because the standard deviation is 0.2515497 so this tells us that the graph in d is indeed normally distributed. The expected value is aswell very close to the middle of the graph also is expected in such a normally distributed graph.
 
 3. Is there a variable in your data set which you would expect to follow a discrete uniform distribution? Explain, without looking at the data, why you expect this data to be discrete uniform. If the data would indeed follow a discrete uniform distribution, what would you expect the mean and standard deviation of this variable to be? Next, plot a histogram of the variable, and plot an appropriate discrete uniform distribution on top of this histogram. Comment whether the variable indeed follows this expected distribution. If the distribution deviates from the discrete uniform distribution, explain why this is the case. \textbf{[6 points]}
 
@@ -472,17 +473,56 @@ c. If you look closely at the resulting plot in b.), you will probably see that 
 
 ```{r}
 #WRITE YOUR CODE HERE
+mean_revenue <- aggregate(revenue ~ release_year,
+                          data = movies,
+                          FUN = mean,
+                          na.rm = TRUE)
+
+plot(mean_revenue$release_year, mean_revenue$revenue,
+     main = "mean of revenue",
+     xlab = "Year",
+     ylab = "Mean Revenue",
+     pch = 19)
 
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+The trend is that revenue of movies is decreasing over time, with a few exceptions. 
 
 *step b*
 
 ```{r}
 #WRITE YOUR CODE HERE
+mean_revenue <- aggregate(revenue ~ release_year,
+                           data = movies,
+                           FUN = mean,
+                           na.rm = TRUE)
+
+sd_revenue <- aggregate(revenue ~ release_year,
+                         data = movies,
+                         FUN = sd,
+                         na.rm = TRUE)
+
+n_revenue <- aggregate(revenue ~ release_year,
+                        data = movies,
+                        FUN = length)
+
+conf_int <- sd_revenue$revenue /sqrt(n_revenue$revenue)
+conf_int95 <- 1.96 * conf_int
+conf_int_lowerbound <- mean_revenue$revenue - conf_int95
+conf_int_upperbound <- mean_revenue$revenue + conf_int95
+
+plot(mean_revenue$release_year, mean_revenue$revenue,
+     main = "Mean Revenue by Year (95% CI)",
+     xlab = "Year",
+     ylab = "Mean Revenue",
+     pch = 19,
+     ylim = range(c(conf_int_lowerbound, conf_int_upperbound), na.rm = TRUE))
+
+arrows(x0 = mean_revenue$release_year, y0 = conf_int_lowerbound,
+       x1 = mean_revenue$release_year, y1 = conf_int_upperbound,
+       angle = 90, code = 3, length = 0.10)
 
 ```
 
