@@ -284,49 +284,20 @@ Write your formulated response here.
 I would expect the release month of a movie to follow a discrete uniform distribution because there are 12 possible months, and without looking at the data, each month could be expected to be equally likely for a movie to be released. Therefore, each month would have a probability of 1/12.
 
 For a discrete uniform distribution from 1 to 12, the expected mean is 6.5 and the expected standard deviation is approximately 3.45.
+we chose for the release month variable because its logical that the whole year movies were released because there is not a particular month where the benefits are larger to releasse a new movie. Thats why we expect that release months does not have that much impact.
 
 ```{r}
 #WRITE YOUR CODE HERE
-<<<<<<< HEAD
+
 summary(movies4$release_month)
 sd(movies4$release_month)
 hist(movies4$release_month,freq=FALSE,
      main="Distribution of Movie release_month",
      xlab="month of release")
 abline(h=1/12,col="blue",lwd=2)
-=======
-# Bekijk de frequenties
-table(movies4$release_month)
-
-# Verwachte mean en standard deviation
-mean_uniform <- (1 + 12) / 2
-sd_uniform <- sqrt((12^2 - 1) / 12)
-
-mean_uniform
-sd_uniform
-
-# Histogram
-hist(movies4$release_month,
-     breaks = seq(0.5, 12.5, by = 1),
-     probability = TRUE,
-     main = "Distribution of Movie Release Month",
-     xlab = "Release Month",
-     col = "lightblue",
-     border = "white",
-     xaxt = "n")
-
-# X-as met maanden 1 t/m 12
-axis(1, at = 1:12, labels = 1:12)
-
-# Discrete uniform distribution erboven
-points(1:12, rep(1/12, 12),
-       type = "h",
-       lwd = 3,
-       col = "red")
->>>>>>> aadf12f3d6def2ead5514fbe6e7dd8a24986a8ac
 
 ```
-
+yes the distrubution is similiar as the discrete uniform distrubution what we would expect
 
 **Your Answer:**
 
