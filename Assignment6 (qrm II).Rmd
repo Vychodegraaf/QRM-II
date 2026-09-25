@@ -454,6 +454,7 @@ c. If you look closely at the resulting plot in b.), you will probably see that 
 
 ```{r}
 #WRITE YOUR CODE HERE
+movies <- read.delim("movies4.tsv", header = TRUE)
 mean_revenue <- aggregate(revenue ~ release_year,
                           data = movies,
                           FUN = mean,
