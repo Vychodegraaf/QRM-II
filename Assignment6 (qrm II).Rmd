@@ -460,10 +460,10 @@ mean_revenue <- aggregate(revenue ~ release_year,
                           FUN = mean,
                           na.rm = TRUE)
 
-plot(mean_revenue$release_year, mean_revenue$revenue,
+plot(mean_revenue$release_year, mean_revenue$revenue/1000000,
      main = "mean of revenue",
      xlab = "Year",
-     ylab = "Mean Revenue",
+     ylab = "Mean Revenue in millions",
      pch = 19)
 
 ```
