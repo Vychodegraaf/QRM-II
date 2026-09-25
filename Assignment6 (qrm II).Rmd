@@ -1,7 +1,7 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
-author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders, Vycho de Graaf.
+author: group 6, names: Jard van Duin (2883878), Tobias Pierik, Wouter Sanders (2899366), Vycho de Graaf.
 date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   pdf_document:
@@ -263,26 +263,67 @@ sd(sample_means)
 
 Write your formulated response here.
 The mean is 6.020662 and the standard deviation is 0.2515497. The shape of the histogram is skewed left.
+
 *Step e*
 
 **Your Answer:**
 
-Write your formulated response here.
+```{r}
+m <- mean(movies4$vote_average)
+sd <- sd(movies4$vote_average)/sqrt(25)
+print(m)
+print(sd)
+```
+We expected a low standard deviation, because of the normal distribution. This is the case because the standard deviation is 0.2515497 so this tells us that the graph in d is indeed normally distributed. The expected value is aswell very close to the middle of the graph also is expected in such a normally distributed graph.
 
 3. Is there a variable in your data set which you would expect to follow a discrete uniform distribution? Explain, without looking at the data, why you expect this data to be discrete uniform. If the data would indeed follow a discrete uniform distribution, what would you expect the mean and standard deviation of this variable to be? Next, plot a histogram of the variable, and plot an appropriate discrete uniform distribution on top of this histogram. Comment whether the variable indeed follows this expected distribution. If the distribution deviates from the discrete uniform distribution, explain why this is the case. \textbf{[6 points]}
 
 **Your Answer:**
 
 Write your formulated response here.
+I would expect the release month of a movie to follow a discrete uniform distribution because there are 12 possible months, and without looking at the data, each month could be expected to be equally likely for a movie to be released. Therefore, each month would have a probability of 1/12.
+
+For a discrete uniform distribution from 1 to 12, the expected mean is 6.5 and the expected standard deviation is approximately 3.45.
 
 ```{r}
 #WRITE YOUR CODE HERE
+<<<<<<< HEAD
 summary(movies4$release_month)
 sd(movies4$release_month)
 hist(movies4$release_month,freq=FALSE,
      main="Distribution of Movie release_month",
      xlab="month of release")
 abline(h=1/12,col="blue",lwd=2)
+=======
+# Bekijk de frequenties
+table(movies4$release_month)
+
+# Verwachte mean en standard deviation
+mean_uniform <- (1 + 12) / 2
+sd_uniform <- sqrt((12^2 - 1) / 12)
+
+mean_uniform
+sd_uniform
+
+# Histogram
+hist(movies4$release_month,
+     breaks = seq(0.5, 12.5, by = 1),
+     probability = TRUE,
+     main = "Distribution of Movie Release Month",
+     xlab = "Release Month",
+     col = "lightblue",
+     border = "white",
+     xaxt = "n")
+
+# X-as met maanden 1 t/m 12
+axis(1, at = 1:12, labels = 1:12)
+
+# Discrete uniform distribution erboven
+points(1:12, rep(1/12, 12),
+       type = "h",
+       lwd = 3,
+       col = "red")
+>>>>>>> aadf12f3d6def2ead5514fbe6e7dd8a24986a8ac
 
 ```
 
@@ -290,6 +331,9 @@ abline(h=1/12,col="blue",lwd=2)
 **Your Answer:**
 
 Write your formulated response here.
+There are 808 movies in the dataset, so if the distribution were perfectly uniform, we would expect  67.3 movies to be released in each month. The observed frequencies range from 39 movies in November to 112 movies in September.
+
+The histogram therefore does not follow a perfectly discrete uniform distribution. September has considerably more movie releases than expected, while November has considerably fewer. The deviation from the discrete uniform distribution can be explained by the fact that movie releases are not randomly distributed throughout the year. Movie studios may choose particular release months based on factors such as holidays, audience availability or competition. Therefore, some months can have more movie releases than others.
 
 # Week 3 
 
@@ -300,11 +344,24 @@ For the next part of the assignment, assume that the movies in your data frame a
 #WRITE YOUR CODE HERE
 
 
+x <- movies4$revenue
+
+mean(x, na.rm = TRUE)
+sd(x, na.rm = TRUE)
+sum(!is.na(x))
+
+
+t.test(x, conf.level = 0.90)
+
+
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The 90% confidence interval for the mean revenue is [107,452,778, 135,175,648].
+
+Assuming that the movies in our data frame are a random sample from a larger population of movies, we are 90% confident that the true mean revenue of the population of movies is between $107,452,778 and $135,175,648.
 
 2
 
@@ -317,44 +374,104 @@ d. Assume that the variance of revenue for movies with a male director in your d
 
 ```{r}
 #WRITE YOUR CODE HERE
+sum(movies4$director_gender == "male", na.rm = TRUE)
+sum(movies4$director_gender == "female", na.rm = TRUE)
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+In the sample, 685 movies were directed by a male director, while 80 movies were directed by a female director.
 
 *step b*
 
 ```{r}
 #WRITE YOUR CODE HERE
+binom.test(685, 765, p = 0.5, alternative = "two.sided")
 
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The null and alternative hypotheses are:
+
+𝐻0:𝑝=0.5, meaning that the probability of a movie being directed by a male or female director is equal.
+
+𝐻𝐴:𝑝≠0.5, meaning that the probabilities are not equal.
+
+I use a significance level of 𝛼=0.05.
+
+Using a two-sided binomial test in R with binom.test(685, 765, p = 0.5), the p-value is extremely small (p < 0.001).
+
+Since the p-value is smaller than the significance level of 0.05, we reject the null hypothesis. There is strong statistical evidence that the probability of a movie being directed by a male director is not equal to the probability of it being directed by a female director.
 
 *step c*
 
 ```{r}
 #WRITE YOUR CODE HERE
 
+movies4$revenue_millions <- movies4$revenue / 1000000
+
+
+var(movies4$revenue_millions[movies4$director_gender == "male"],
+    na.rm = TRUE)
+
+
+var(movies4$revenue_millions[movies4$director_gender == "female"],
+    na.rm = TRUE)
+
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+Revenue was recoded from dollars to millions of dollars by dividing revenue by 1,000,000.
+
+The variance of revenue for movies with a male director is 39,453.26 (million dollars)².
+
+The variance of revenue for movies with a female director is 21,607.04 (million dollars)².
 
 *step d*
 ```{r}
 #WRITE YOUR CODE HERE
 
+F <- 21607.04 / 39453.26
+F
+
+
+p_value <- 2 * min(
+  pf(F, df1 = 79, df2 = 79),
+  1 - pf(F, df1 = 79, df2 = 79)
+)
+
+p_value
+
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The null hypothesis is
+
+𝐻0: standard deviation𝐹2=39,453.26
+
+meaning that the population variance of revenue for movies with a female director is equal to the population variance for movies with a male director.
+
+The alternative hypothesis is
+
+𝐻𝐴: standard deviation𝐹2≠39,453.26.
+
+I use a significance level of 𝛼=0.05.
+
+The test statistic is
+
+𝐹=21,607.04 /39,453.26=0.5477.
+
+Under the null hypothesis, the test statistic follows an F-distribution with 79 degrees of freedom. The two-sided p-value is 0.0081.
+
+Since the p-value (0.0081) is smaller than the significance level of 0.05, we reject the null hypothesis. There is sufficient evidence to conclude that the variance of revenue for movies with female directors is different from the variance of revenue for movies with male directors.
 
 3
 
@@ -366,17 +483,56 @@ c. If you look closely at the resulting plot in b.), you will probably see that 
 
 ```{r}
 #WRITE YOUR CODE HERE
+mean_revenue <- aggregate(revenue ~ release_year,
+                          data = movies,
+                          FUN = mean,
+                          na.rm = TRUE)
+
+plot(mean_revenue$release_year, mean_revenue$revenue,
+     main = "mean of revenue",
+     xlab = "Year",
+     ylab = "Mean Revenue",
+     pch = 19)
 
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+The trend is that revenue of movies is decreasing over time, with a few exceptions. 
 
 *step b*
 
 ```{r}
 #WRITE YOUR CODE HERE
+mean_revenue <- aggregate(revenue ~ release_year,
+                           data = movies,
+                           FUN = mean,
+                           na.rm = TRUE)
+
+sd_revenue <- aggregate(revenue ~ release_year,
+                         data = movies,
+                         FUN = sd,
+                         na.rm = TRUE)
+
+n_revenue <- aggregate(revenue ~ release_year,
+                        data = movies,
+                        FUN = length)
+
+conf_int <- sd_revenue$revenue /sqrt(n_revenue$revenue)
+conf_int95 <- 1.96 * conf_int
+conf_int_lowerbound <- mean_revenue$revenue - conf_int95
+conf_int_upperbound <- mean_revenue$revenue + conf_int95
+
+plot(mean_revenue$release_year, mean_revenue$revenue,
+     main = "Mean Revenue by Year (95% CI)",
+     xlab = "Year",
+     ylab = "Mean Revenue",
+     pch = 19,
+     ylim = range(c(conf_int_lowerbound, conf_int_upperbound), na.rm = TRUE))
+
+arrows(x0 = mean_revenue$release_year, y0 = conf_int_lowerbound,
+       x1 = mean_revenue$release_year, y1 = conf_int_upperbound,
+       angle = 90, code = 3, length = 0.10)
 
 ```
 
