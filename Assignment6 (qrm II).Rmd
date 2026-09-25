@@ -476,6 +476,7 @@ The trend is that revenue of movies is decreasing over time, with a few exceptio
 
 ```{r}
 #WRITE YOUR CODE HERE
+
 mean_revenue <- aggregate(revenue ~ release_year,
                            data = movies,
                            FUN = mean,
@@ -490,15 +491,15 @@ n_revenue <- aggregate(revenue ~ release_year,
                         data = movies,
                         FUN = length)
 
-conf_int <- sd_revenue$revenue /sqrt(n_revenue$revenue)
+conf_int <- (sd_revenue$revenue/1000000) /sqrt(n_revenue$revenue)
 conf_int95 <- 1.96 * conf_int
-conf_int_lowerbound <- mean_revenue$revenue - conf_int95
-conf_int_upperbound <- mean_revenue$revenue + conf_int95
+conf_int_lowerbound <- mean_revenue$revenue/1000000 - conf_int95
+conf_int_upperbound <- mean_revenue$revenue/1000000 + conf_int95
 
 plot(mean_revenue$release_year, mean_revenue$revenue,
      main = "Mean Revenue by Year (95% CI)",
      xlab = "Year",
-     ylab = "Mean Revenue",
+     ylab = "Mean Revenue In Millions",
      pch = 19,
      ylim = range(c(conf_int_lowerbound, conf_int_upperbound), na.rm = TRUE))
 
