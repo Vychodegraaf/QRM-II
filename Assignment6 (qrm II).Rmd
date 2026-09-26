@@ -1,7 +1,8 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
-author: group 6, names: Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702).
+author: group 6, 
+names: Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702).
 date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   pdf_document:
@@ -26,7 +27,7 @@ format:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-install.packages("moments")
+
 library(dplyr)
 library(moments)
 ```
@@ -66,7 +67,7 @@ We encourage you to keep your code blocks, printing statements, and final answer
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+movies4 <- read.delim("movies4.tsv", header = TRUE)
 nrow(movies4) 
 ncol(movies4)
 #hernoemen row naar subjects en colomn naar variables keer elkaar = observations
@@ -368,11 +369,11 @@ binom.test(685, 765, p = 0.5, alternative = "two.sided")
 Write your formulated response here.
 The null and alternative hypotheses are:
 
-𝐻0:𝑝=0.5, meaning that the probability of a movie being directed by a male or female director is equal.
+H0:p = 0.5, meaning that the probability of a movie being directed by a male or female director is equal.
 
-𝐻𝐴:𝑝≠0.5, meaning that the probabilities are not equal.
+HA:p =/ 0.5, meaning that the probabilities are not equal.
 
-I use a significance level of 𝛼=0.05.
+I use a significance level of a = 0.05.
 
 Using a two-sided binomial test in R with binom.test(685, 765, p = 0.5), the p-value is extremely small (p < 0.001).
 
@@ -426,19 +427,19 @@ p_value
 Write your formulated response here.
 The null hypothesis is
 
-𝐻0: standard deviation𝐹2=39,453.26
+H0: standard deviation F 2=39,453.26
 
 meaning that the population variance of revenue for movies with a female director is equal to the population variance for movies with a male director.
 
 The alternative hypothesis is
 
-𝐻𝐴: standard deviation𝐹2≠39,453.26.
+HA: standard deviation F 2=/39,453.26.
 
-I use a significance level of 𝛼=0.05.
+I use a significance level of a=0.05.
 
 The test statistic is
 
-𝐹=21,607.04 /39,453.26=0.5477.
+F=21,607.04 /39,453.26=0.5477.
 
 Under the null hypothesis, the test statistic follows an F-distribution with 79 degrees of freedom. The two-sided p-value is 0.0081.
 
