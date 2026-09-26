@@ -83,7 +83,6 @@ print(observations)
 
 **Your Answer:**
 
-Write your response here.
 The dataset has 15352 observations, 19 variables, 808 subjects. A subject consists of a unit that is being researched. In this case different movies.
 
 2. Which of the following types of variables are present in your data set? (i) nominal; (ii) ordinal; (iii); continuous; (iv) discrete. If present, name one example of such a variable present in your data set. \textbf{[4 points]}
@@ -94,7 +93,6 @@ head(movies4, n=4)
 
 **Your Answer:**
 
-Write your response here.
 Genre is nominal, ordinal is not present, popularity is continuous and runtime is discrete.
 
 3. A movie studio wants to know which types of movies give maximal revenue. Perform the following steps to provide the movie studio with an analysis which corresponds to their request:
@@ -125,8 +123,7 @@ Each week consists of 1, 2, or 3 subquestions. The total amount of points you ca
 
 **Your Answer:**
 
-Write your formulated response here.
-The mean is 82727885, median is 14560504, maximum is 1519557910 and the minimum is 0
+The mean is 82727885, median is 14560504, maximum is 1519557910 and the minimum is 0.
 *Step b*
 
 ```{r}
@@ -135,7 +132,6 @@ min(movies4$revenue)
 ```
 **Your Answer:**
 
-Write your formulated response here.
 the movie with the highest revenue is The Avengers with a revenue of 1519557910 and an example of a movie with the lowest revenue is Red Dog with a revenue of 0.
 *Step c*
 
@@ -148,7 +144,6 @@ hist(movies4$revenue,
 
 **Your Answer:**
 
-Write your formulated response here.
 The histogram is skewed right. This tells us that it is hard to make Revenue from movies in the movie industry. Most movies will not earn a lot.
 *Step d*
 
@@ -160,7 +155,6 @@ mean(movies_LogRevenue)
 
 **Your Answer:**
 
-Write your formulated response here.
 movies with no revenue will show -inf since the log of 0 does not exist. 
 The mean also shows -inf since the values of -inf are still included when calculating the mean. 
 *Step e*
@@ -177,7 +171,6 @@ hist(movies_LogRevenueNA,
 
 **Your Answer:**
 
-Write your formulated response here.
 The mean is 17.2798 and the shape of the histogram is left skewed.
 
 *Step f*
@@ -192,7 +185,6 @@ kurtosis(movies_LogRevenueNA, na.rm = TRUE)
 
 **Your Answer:**
 
-Write your formulated response here.
 The skewness is 3.261763 and the kurtosis is 16.35398 for the variable revenue. The skewness is above 0 which explains that it is skewed right. The kurtosis of 16 explains why the histogram has high frequency to the left side and is not flat. The skewness for the log of revenue is -1.946866 which tells us that it is skewed left. The kurtosis of 10.87042 tells us that the that the histogram is not flat.
 
 # Week 2 
@@ -200,7 +192,6 @@ The skewness is 3.261763 and the kurtosis is 16.35398 for the variable revenue. 
 
 *Your answer here:*
 
-Write your formulated response here.
 The dataset is a sample of a larger population since the index is missing a lot of numbers. We would describe the full population as all movies from 1990 to 2016.
 
 2 For this question, you will assume that your data set is the full population. 
@@ -220,7 +211,6 @@ mean(movies4$vote_average)
 
 **Your Answer:**
 
-Write your formulated response here.
 The mean is 6.039356
 *Step b*
 
@@ -231,9 +221,8 @@ mean(movies_sample)
 ```
 
 **Your Answer:**
+The mean of the sample set does not match the average of the total movies, because the sample set only includes 25 random movies, and thus is a bit skewed because they are not representative of all the movies.
 
-Write your formulated response here.
-the average of the sample is a bit different as the average of the total movies. this is the case because you are only taking 25 of the total. This is the reason why the average could be a bit randomized. 
 *Step c*
 
 ```{r}
@@ -246,7 +235,7 @@ sample_means <- c()
 
 **Your Answer:**
 
-Write your formulated response here.
+5.984406 6.219849 6.091184 6.334625 6.456935 6.357936
 
 *Step d*
 
@@ -262,7 +251,6 @@ sd(sample_means)
 
 **Your Answer:**
 
-Write your formulated response here.
 The mean is 6.020662 and the standard deviation is 0.2515497. The shape of the histogram is skewed left.
 
 *Step e*
@@ -281,11 +269,10 @@ We expected a low standard deviation, because of the normal distribution. This i
 
 **Your Answer:**
 
-Write your formulated response here.
 I would expect the release month of a movie to follow a discrete uniform distribution because there are 12 possible months, and without looking at the data, each month could be expected to be equally likely for a movie to be released. Therefore, each month would have a probability of 1/12.
 
 For a discrete uniform distribution from 1 to 12, the expected mean is 6.5 and the expected standard deviation is approximately 3.45.
-we chose for the release month variable because its logical that the whole year movies were released because there is not a particular month where the benefits are larger to releasse a new movie. Thats why we expect that release months does not have that much impact.
+we chose for the release month variable because its logical that the whole year movies were released because there is not a particular month where the benefits are larger to release a new movie. Thats why we expect that release months does not have that much impact.
 
 ```{r}
 #WRITE YOUR CODE HERE
@@ -298,7 +285,7 @@ hist(movies4$release_month,freq=FALSE,
 abline(h=1/12,col="blue",lwd=2)
 
 ```
-yes the distrubution is similiar as the discrete uniform distrubution what we would expect
+yes the distrubution is similiar as the discrete uniform distrubution what we would expect.
 
 **Your Answer:**
 
@@ -330,7 +317,6 @@ t.test(x, conf.level = 0.90)
 
 **Your Answer:**
 
-Write your formulated response here.
 The 90% confidence interval for the mean revenue is [107,452,778, 135,175,648].
 
 Assuming that the movies in our data frame are a random sample from a larger population of movies, we are 90% confident that the true mean revenue of the population of movies is between $107,452,778 and $135,175,648.
@@ -353,7 +339,6 @@ sum(movies4$director_gender == "female", na.rm = TRUE)
 
 **Your Answer:**
 
-Write your formulated response here.
 In the sample, 685 movies were directed by a male director, while 80 movies were directed by a female director.
 
 *step b*
@@ -366,7 +351,6 @@ binom.test(685, 765, p = 0.5, alternative = "two.sided")
 
 **Your Answer:**
 
-Write your formulated response here.
 The null and alternative hypotheses are:
 
 H0:p=0.5, meaning that the probability of a movie being directed by a male or female director is equal.
@@ -398,7 +382,6 @@ var(movies4$revenue_millions[movies4$director_gender == "female"],
 
 **Your Answer:**
 
-Write your formulated response here.
 Revenue was recoded from dollars to millions of dollars by dividing revenue by 1,000,000.
 
 The variance of revenue for movies with a male director is 39,453.26 (million dollars)².
@@ -424,7 +407,6 @@ p_value
 
 **Your Answer:**
 
-Write your formulated response here.
 The null hypothesis is
 
 H0: standard deviation F2=39,453.26
@@ -471,7 +453,7 @@ plot(mean_revenue$release_year, mean_revenue$revenue/1000000,
 
 **Your Answer:**
 
-The trend is that revenue of movies is decreasing over time, with a few exceptions. 
+The overall trend is that revenue of movies is decreasing over time. 
 
 *step b*
 
@@ -507,7 +489,7 @@ arrows(mean_revenue$release_year,
 
 **Your Answer:**
 
-The reason for this is that the standard deviations vary from year to year. The higher the standard deviation in a given year, the wider the confidence interval needs to be; this is evident in years with a higher standard deviation or a lower N. The higher the N, the more observations you have—and thus the narrower the confidence interval—because you have conducted more research and have greater certainty.
+The reason for this is that the standard deviations from year to year vary, the higher the standard deviation is the wider the confidence interval needs to be. This is most clearly seen in years with a high standard deviation or a lower N. The N is relevant, because the higher the number of observations you have the narrower the confidence interval is, because you have more data to trust and thus have greater certainty.
 
 *step c*
 
