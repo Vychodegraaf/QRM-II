@@ -369,11 +369,11 @@ binom.test(685, 765, p = 0.5, alternative = "two.sided")
 Write your formulated response here.
 The null and alternative hypotheses are:
 
-H0:p = 0.5, meaning that the probability of a movie being directed by a male or female director is equal.
+H0:p=0.5, meaning that the probability of a movie being directed by a male or female director is equal.
 
-HA:p =/ 0.5, meaning that the probabilities are not equal.
+HA:p=/0.5, meaning that the probabilities are not equal.
 
-I use a significance level of a = 0.05.
+I use a significance level of a=0.05.
 
 Using a two-sided binomial test in R with binom.test(685, 765, p = 0.5), the p-value is extremely small (p < 0.001).
 
@@ -427,13 +427,13 @@ p_value
 Write your formulated response here.
 The null hypothesis is
 
-H0: standard deviation F 2=39,453.26
+H0: standard deviation F2=39,453.26
 
 meaning that the population variance of revenue for movies with a female director is equal to the population variance for movies with a male director.
 
 The alternative hypothesis is
 
-HA: standard deviation F 2=/39,453.26.
+HA: standard deviation F2=/39,453.26.
 
 I use a significance level of a=0.05.
 
