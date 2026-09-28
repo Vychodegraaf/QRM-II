@@ -524,6 +524,8 @@ g. Who do you think is correct? Bob or Chantal? What would you advise the movie 
 
 ```{r}
 #WRITE YOUR CODE HERE
+model <- lm(movies4$revenue ~ movies4$budget)
+summary(model)
 
 ```
 
