@@ -576,7 +576,12 @@ This p-value is smaller than just about every existing a-value, from which you c
 
 ```{r}
 #WRITE YOUR CODE HERE
+movies4$log_revenue <- ifelse(movies4$revenue == 0, NA, log(movies4$revenue))
+movies4$log_budget <- ifelse(movies4$budget == 0, NA, log(movies4$budget))
 
+model <- lm(log_revenue ~ log_budget, data = movies4)
+
+summary(model)
 ```
 
 **Your Answer:**
@@ -587,12 +592,12 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+coef(model)[2]
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+a 1% increase in budget is associated with a 1.03% increase in revenue in this example. 
 
 *step f*
 
