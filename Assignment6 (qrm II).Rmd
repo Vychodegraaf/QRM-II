@@ -1,8 +1,12 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
+<<<<<<< Updated upstream
 author: group 6, 
 names: Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702).
+=======
+author: group 6, names- Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702).
+>>>>>>> Stashed changes
 date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   pdf_document:
@@ -32,6 +36,9 @@ library(dplyr)
 library(moments)
 ```
 
+```{r load data}
+movies4 = read.delim("movies4.tsv", header=T)
+```
 # Introduction
 
 
@@ -537,23 +544,33 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+beta1 <- coef(model)["movies4$budget"]
+beta1
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+This result means that if the budget increases by one unit, revenue increases by 3.268 units.
 
 *step c*
 
 ```{r}
 #WRITE YOUR CODE HERE
+model <- lm(movies4$revenue ~ movies4$budget)
 
+beta1 <- coef(model)[2]
+se <- summary(model)$coefficients[2,2]
+
+t <- (beta1 - 1) / se
+
+p_value <- pt(t, df.residual(model), lower.tail = FALSE)
+
+p_value
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+This p-value is smaller than just about every existing a-value, from which you can conclude that H0 can be rejected and that beta1 is greater than 1
 
 *step d*
 
