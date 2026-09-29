@@ -579,9 +579,9 @@ This p-value is smaller than just about every existing a-value, from which you c
 movies4$log_revenue <- ifelse(movies4$revenue == 0, NA, log(movies4$revenue))
 movies4$log_budget <- ifelse(movies4$budget == 0, NA, log(movies4$budget))
 
-model <- lm(log_revenue ~ log_budget, data = movies4)
+log_model <- lm(log_revenue ~ log_budget, data = movies4)
 
-summary(model)
+summary(log_model)
 ```
 
 **Your Answer:**
@@ -592,7 +592,7 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
-coef(model)[2]
+coef(log_model)[2]
 ```
 
 **Your Answer:**
@@ -604,12 +604,20 @@ a 1% increase in budget is associated with a 1.03% increase in revenue in this e
 
 ```{r}
 #WRITE YOUR CODE HERE
+R_squared_model <- summary(model)$r.squared
+R_squared_log_model <- summary(log_model)$r.squared
+
+if (R_squared_model>R_squared_log_model){
+  "The level-level model has a better fit"
+} else {
+  "The log-log model has a better fit"
+}
 
 ```
 
 **Your Answer:**
-
 Write your formulated response here.
+The level-level model has a better fit, because the R-squared of the level-level model is greater than the R-squared of the log-log model.
 
 *step g*
 
@@ -619,8 +627,8 @@ Write your formulated response here.
 ```
 
 **Your Answer:**
-
 Write your formulated response here.
+I think Chantal is correct. If you were to increase the budget, the revenue will be increased even more. The statement made by Chantal is correct.
 
 2
 
