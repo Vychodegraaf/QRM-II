@@ -729,13 +729,16 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
+model <- lm(log_revenue ~ log_budget + genre2 + release_year, 
+            data = movies4)
 
+summary(model)
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
-
+If the budget increases with 1% than the revenue will increase with 1.001%. The intercept is based on action. If the movie is a drama, Thriller or a different genre in that case the revenue will decrease compared with an action movie. A higher release year also is associated with a lower revenue.
 *step d*
 
 ```{r}
