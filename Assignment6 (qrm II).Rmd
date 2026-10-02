@@ -705,7 +705,10 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
+model <- lm(log_revenue ~ log_budget + genre2 + release_year, 
+            data = movies4)
 
+summary(model)
 ```
 
 **Your Answer:**
