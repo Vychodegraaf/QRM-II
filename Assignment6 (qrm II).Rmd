@@ -665,11 +665,26 @@ The scatterplot shows a positive assocation between log revenue and log budget. 
 ```{r}
 #WRITE YOUR CODE HERE
 
+i <- which.max(residuals(log_model))
+
+model_data <- model.frame(log_model)
+
+original_row <- as.numeric(rownames(model_data)[i])
+
+movies4[original_row, c("title")]
+
+c(
+  "Log Revenue" = model_data$log_revenue[i],
+  "Predicted Log Revenue" = predict(log_model)[i],
+  "Residual" = residuals(log_model)[i]
+)
+
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The Full Monty is an example of a movie that vastly overperformed. Its actual log revenue is 19.368, while its predicted log revenue was 15.474. The residual is 3.894, this means that the movie's actual log revenue is way higher than what the model predicted given its budget.
 
 # Week 5
 
