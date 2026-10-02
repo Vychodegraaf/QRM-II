@@ -586,7 +586,8 @@ summary(log_model)
 
 **Your Answer:**
 
-Write your formulated response here.
+The estimated regression model is,
+Log Rêvenue = -0.04588 + 1.02996 Log Budget.
 
 *step e*
 
