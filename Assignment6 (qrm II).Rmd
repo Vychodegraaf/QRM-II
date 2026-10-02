@@ -684,7 +684,12 @@ Drama, Comedy and Thriller
 
 ```{r}
 #WRITE YOUR CODE HERE
+movies4$genre2 <- ifelse(movies4$genre == "Thriller" | 
+                         movies4$genre == "Comedy" | 
+                         movies4$genre == "Drama",
+                         movies4$genre, "Other")
 
+table(movies4$genre2)
 ```
 
 **Your Answer:**
