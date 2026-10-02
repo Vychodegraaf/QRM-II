@@ -728,12 +728,21 @@ If the budget increases with 1% than the revenue will increase with 1.001%. The 
 
 ```{r}
 #WRITE YOUR CODE HERE
+model <- lm(revenue ~ release_year + budget + runtime + genre, data = movies4)
 
+new_movie <- data.frame(
+  release_year = 2026,
+  budget = 20000000,
+  runtime = 120,
+  genre = "Drama"
+)
+
+predict(model, newdata = new_movie, interval = "prediction", level = 0.90)
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+the predicted revenue is 57 977 522. Almost 58 million of revenue. 
 
 *step e*
 
