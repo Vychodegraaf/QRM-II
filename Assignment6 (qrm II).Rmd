@@ -674,12 +674,12 @@ f. One executive at the studio wants to time the release of the movie to a speci
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+sort(table(movies4$genre), decreasing = TRUE)[1:3]
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+Drama, Comedy and Thriller
 
 *step b*
 
