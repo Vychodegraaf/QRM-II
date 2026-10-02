@@ -624,12 +624,16 @@ The level-level model has a better fit, because the R-squared of the level-level
 
 ```{r}
 #WRITE YOUR CODE HERE
-
+if (p_value < 0.05 && beta1 > 1) {
+  cat("Conclusion: The data support Chantal's claim.\n")
+} else {
+  cat("Conclusion: The data do not provide sufficient evidence for Chantal's claim.\n")
+}
 ```
 
 **Your Answer:**
 Write your formulated response here.
-I think Chantal is correct. If you were to increase the budget, the revenue will be increased even more. The statement made by Chantal is correct.
+I think Chantal is correct. If you were to increase the budget, the revenue will be increased even more. The statement made by Chantal is correct. My advice is that the studio should consider the estimated relationship between budget and revenue and choose production budgets carefully. The evidence rejects the idea that higher production spending is automatically wasteful.
 
 2
 
