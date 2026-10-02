@@ -644,12 +644,21 @@ b. Using the insights from the scatterplot, your linear model, and your data, fi
 
 ```{r}
 #WRITE YOUR CODE HERE
+plot(movies4$log_budget, movies4$log_revenue,
+     xlab = "Log Budget",
+     ylab = "Log Revenue",
+     main = "Log Revenue vs. Log Budget",
+     pch = 20)
 
+log_model <- lm(log_revenue ~ log_budget, data = movies4)
+
+abline(log_model, col = "blue", lwd = 2)
 ```
 
 **Your Answer:**
 
 Write your formulated response here.
+The scatterplot shows a positive assocation between log revenue and log budget. The fitted regression line indicates that movies with higher log budgets tend to have higher log revenues.
 
 *step b*
 
