@@ -798,6 +798,26 @@ The graph about Residuals and Log of Budget shows a bit of heteroskedasticity if
 
 ```{r}
 #WRITE YOUR CODE HERE
+genre2 <- movies4$genre2
+movies4$release_month <- as.factor(movies4$release_month)
 
+model_f <- lm(log(revenue) ~ log(budget) + genre2 +
+                release_year + release_month,
+              data = movies4,
+              subset = revenue > 0 & budget > 0)
+
+summary(model_f)
+
+
+model_f2 <- lm(log(revenue) ~ log(budget) +
+                            genre2 + release_year,
+                          data = movies4,
+                          subset = revenue > 0 & budget > 0)
+
+anova(model_f2, model_f)
 ```
 
+**Your Answer:**
+Our H0 is that month of release does not affect revenue
+and H1 that in at least 1 month, the month has affect on revenue
+Since the p value in the test is 0.01862 and thus less than 0.05 we reject the null hypothesis, this suggests that the release month has effect has an effect on movie revenue. Therefore we would advice the movie studio that they should consider the release month when releasing a movie.
