@@ -1,14 +1,10 @@
 ---
 title: "QRM II Graded Assignment (6)"
 subtitle: "Period 1, 2026"
-<<<<<<< Updated upstream
 author: group 6, 
-names: Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702), Finn van Echtelt(2871366)
-=======
-author: group 6, names- Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702).
->>>>>>> Stashed changes
-date:  "`r format(Sys.Date(), '%d-%m-%Y')`"
-output:
+names: Jard van Duin (2883878), Tobias Pierik(2898032), Wouter Sanders (2899366), Vycho de Graaf(2892702), Finn van Echtelt(2871366).
+date: 10-10-2026
+output: 
   pdf_document:
     number_sections: true
   html_document:
