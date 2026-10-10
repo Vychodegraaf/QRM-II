@@ -729,10 +729,10 @@ Write your formulated response here.
 
 ```{r}
 #WRITE YOUR CODE HERE
-model <- lm(log_revenue ~ log_budget + genre2 + release_year, 
+model_c <- lm(log_revenue ~ log_budget + genre2 + release_year, 
             data = movies4)
 
-summary(model)
+summary(model_c)
 ```
 
 **Your Answer:**
@@ -763,12 +763,35 @@ the predicted revenue is 57 977 522. Almost 58 million of revenue.
 
 ```{r}
 #WRITE YOUR CODE HERE
+movies_model_c <- model.frame(model_c)
+movies_model_c$residuals <- residuals(model_c)
+
+plot(movies_model_c$log_budget, movies_model_c$residuals,
+     xlab = "Log of Budget",
+     ylab = "Residuals",
+     main = "Residuals and Log Budget", 
+     ylim = c(-15, 10))
+abline(h = 0, lty = 2)
+
+plot(movies_model_c$release_year, movies_model_c$residuals,
+     xlab = "Release Year",
+     ylab = "Residuals",
+     main = "Residuals and Release Year",
+     ylim = c(-15, 10))
+abline(h = 0, lty = 2)
+
+boxplot(movies_model_c$residuals ~ movies_model_c$genre2,
+        xlab = "Genre",
+        ylab = "Residuals",
+        main = "Residuals by Genre",
+        ylim = c(-10, 10))
+abline(h = 0, lty = 2)
 
 ```
 
 **Your Answer:**
 
-Write your formulated response here.
+The graph about Residuals and Log of Budget shows a bit of heteroskedasticity if you look from the right side of the graph you can see a centralized point which spreads out more the further to the left you go. The other graphs show no sign of heteroskedasticity.
 
 *step f*
 
